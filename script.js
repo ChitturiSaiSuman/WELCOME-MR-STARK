@@ -1,0 +1,157 @@
+const asciiArtBase64Encoding = {
+    "A": "ICAgICAgICAKICAgIyAgICAKICAjICMgICAKICMgICAjICAKIyMjIyMjIyAKIyAgICAgIyAKIyAgICAgIyAKIyAgICAgIyAKICAgICAgICAKICAgICAgICAK",
+    "B": "ICAgICAgICAKIyMjIyMjICAKIyAgICAgIyAKIyAgICAgIyAKIyMjIyMjICAKIyAgICAgIyAKIyAgICAgIyAKIyMjIyMjICAKICAgICAgICAKICAgICAgICAK",
+    "C": "ICAgICAgICAKICMjIyMjICAKIyAgICAgIyAKIyAgICAgICAKIyAgICAgICAKIyAgICAgICAKIyAgICAgIyAKICMjIyMjICAKICAgICAgICAKICAgICAgICAK",
+    "D": "ICAgICAgICAKIyMjIyMgICAKIyAgICAjICAKIyAgICAgIyAKIyAgICAgIyAKIyAgICAgIyAKIyAgICAjICAKIyMjIyMgICAKICAgICAgICAKICAgICAgICAK",
+    "E": "ICAgICAgICAKIyMjIyMjIyAKIyAgICAgICAKIyAgICAgICAKIyMjIyMgICAKIyAgICAgICAKIyAgICAgICAKIyMjIyMjIyAKICAgICAgICAKICAgICAgICAK",
+    "F": "ICAgICAgICAKIyMjIyMjIyAKIyAgICAgICAKIyAgICAgICAKIyMjIyMgICAKIyAgICAgICAKIyAgICAgICAKIyAgICAgICAKICAgICAgICAKICAgICAgICAK",
+    "G": "ICAgICAgICAKICMjIyMjICAKIyAgICAgIyAKIyAgICAgICAKIyAgIyMjIyAKIyAgICAgIyAKIyAgICAgIyAKICMjIyMjICAKICAgICAgICAKICAgICAgICAK",
+    "H": "ICAgICAgICAKIyAgICAgIyAKIyAgICAgIyAKIyAgICAgIyAKIyMjIyMjIyAKIyAgICAgIyAKIyAgICAgIyAKIyAgICAgIyAKICAgICAgICAKICAgICAgICAK",
+    "I": "ICAgICAgICAKIyMjIyMjIyAKICAgIyAgICAKICAgIyAgICAKICAgIyAgICAKICAgIyAgICAKICAgIyAgICAKIyMjIyMjIyAKICAgICAgICAKICAgICAgICAK",
+    "J": "ICAgICAgICAKIyMjIyMjIyAKICAgIyAgICAKICAgIyAgICAKICAgIyAgICAKICAgIyAgICAKIyAgIyAgICAKICMjICAgICAKICAgICAgICAKICAgICAgICAK",
+    "K": "ICAgICAgICAKIyAgICAgIyAKIyAgICAjICAKIyAgICMgICAKIyMjIyAgICAKIyAgICMgICAKIyAgICAjICAKIyAgICAgIyAKICAgICAgICAKICAgICAgICAK",
+    "L": "ICAgICAgICAKIyAgICAgICAKIyAgICAgICAKIyAgICAgICAKIyAgICAgICAKIyAgICAgICAKIyAgICAgICAKIyMjIyMjIyAKICAgICAgICAKICAgICAgICAK",
+    "M": "ICAgICAgICAKIyAgICAgIyAKIyMgICAjIyAKIyAjICMgIyAKIyAgIyAgIyAKIyAgICAgIyAKIyAgICAgIyAKIyAgICAgIyAKICAgICAgICAKICAgICAgICAK",
+    "N": "ICAgICAgICAKIyAgICAgIyAKIyMgICAgIyAKIyAjICAgIyAKIyAgIyAgIyAKIyAgICMgIyAKIyAgICAjIyAKIyAgICAgIyAKICAgICAgICAKICAgICAgICAK",
+    "O": "ICAgICAgICAKIyMjIyMjIyAKIyAgICAgIyAKIyAgICAgIyAKIyAgICAgIyAKIyAgICAgIyAKIyAgICAgIyAKIyMjIyMjIyAKICAgICAgICAKICAgICAgICAK",
+    "P": "ICAgICAgICAKIyMjIyMjICAKIyAgICAgIyAKIyAgICAgIyAKIyMjIyMjICAKIyAgICAgICAKIyAgICAgICAKIyAgICAgICAKICAgICAgICAKICAgICAgICAK",
+    "Q": "ICAgICAgICAKIyMjIyMjIyAKIyAgICAgIyAKIyAgICAgIyAKIyAgICAgIyAKIyMjIyMjIyAKICAgIyMgICAKICAgICMjIyAKICAgICAgICAKICAgICAgICAK",
+    "R": "ICAgICAgICAKIyMjIyMjICAKIyAgICAgIyAKIyAgICAgIyAKIyMjIyMjICAKIyAgICMgICAKIyAgICAjICAKIyAgICAgIyAKICAgICAgICAKICAgICAgICAK",
+    "S": "ICAgICAgICAKICMjIyMjICAKIyAgICAgIyAKIyAgICAgICAKICMjIyMjICAKICAgICAgIyAKIyAgICAgIyAKICMjIyMjICAKICAgICAgICAKICAgICAgICAK",
+    "T": "ICAgICAgICAKIyMjIyMjIyAKICAgIyAgICAKICAgIyAgICAKICAgIyAgICAKICAgIyAgICAKICAgIyAgICAKICAgIyAgICAKICAgICAgICAKICAgICAgICAK",
+    "U": "ICAgICAgICAKIyAgICAgIyAKIyAgICAgIyAKIyAgICAgIyAKIyAgICAgIyAKIyAgICAgIyAKIyAgICAgIyAKICMjIyMjICAKICAgICAgICAKICAgICAgICAK",
+    "V": "ICAgICAgICAKIyAgICAgIyAKIyAgICAgIyAKIyAgICAgIyAKIyAgICAgIyAKICMgICAjICAKICAjICMgICAKICAgIyAgICAKICAgICAgICAKICAgICAgICAK",
+    "W": "ICAgICAgICAKIyAgICAgIyAKIyAgIyAgIyAKIyAgIyAgIyAKIyAgIyAgIyAKIyAgIyAgIyAKIyAgIyAgIyAKICMjICMjICAKICAgICAgICAKICAgICAgICAK",
+    "X": "ICAgICAgICAKIyAgICAgIyAKICMgICAjICAKICAjICMgICAKICAgIyAgICAKICAjICMgICAKICMgICAjICAKIyAgICAgIyAKICAgICAgICAKICAgICAgICAK",
+    "Y": "ICAgICAgICAKIyAgICAgIyAKICMgICAjICAKICAjICMgICAKICAgIyAgICAKICAjICAgICAKICMgICAgICAKIyAgICAgICAKICAgICAgICAKICAgICAgICAK",
+    "Z": "ICAgICAgICAKIyMjIyMjIyAKICAgICAjICAKICAgICMgICAKICAgIyAgICAKICAjICAgICAKICMgICAgICAKIyMjIyMjIyAKICAgICAgICAKICAgICAgICAK",
+    "a": "ICAgICAgICAKICAgICAgICAKICAgICAgICAKICMjIyMgICAKICAgICAjICAKICMjIyMjICAKIyAgICAjICAKICMjIyMjICAKICAgICAgICAKICAgICAgICAK",
+    "b": "ICAgICAgICAKIyAgICAgICAKIyAgICAgICAKIyMjIyMgICAKIyAgICAjICAKIyAgICAjICAKIyAgICAjICAKIyMjIyMgICAKICAgICAgICAKICAgICAgICAK",
+    "c": "ICAgICAgICAKICAgICAgICAKICAgICAgICAKICMjIyMjICAKIyAgICAgICAKIyAgICAgICAKIyAgICAgICAKICMjIyMjICAKICAgICAgICAKICAgICAgICAK",
+    "d": "ICAgICAgICAKICAgICAjICAKICAgICAjICAKICMjIyMjICAKIyAgICAjICAKIyAgICAjICAKIyAgICAjICAKICMjIyMjICAKICAgICAgICAKICAgICAgICAK",
+    "e": "ICAgICAgICAKICAgICAgICAKICAgICAgICAKICMjIyMgICAKIyAgICAjICAKIyMjIyMjICAKIyAgICAgICAKICMjIyMjICAKICAgICAgICAKICAgICAgICAK",
+    "f": "ICAgICAgICAKICAjIyMjICAKICAjICAgICAKIyMjIyMjICAKICAjICAgICAKICAjICAgICAKICAjICAgICAKICAjICAgICAKICAgICAgICAKICAgICAgICAK",
+    "g": "ICAgICAgICAKICAgICAgICAKICAgICAgICAKICMjIyMgICAKIyAgICAjICAKIyAgICAjICAKIyAgICAjICAKICMjIyMjICAKICAgICAjICAKIyMjIyMgICAK",
+    "h": "ICAgICAgICAKIyAgICAgICAKIyAgICAgICAKIyMjIyMgICAKIyAgICAjICAKIyAgICAjICAKIyAgICAjICAKIyAgICAjICAKICAgICAgICAKICAgICAgICAK",
+    "i": "ICAgICAgICAKICAjIyMgICAKICAjIyMgICAKICAgICAgICAKICAgIyAgICAKICAgIyAgICAKICAgIyAgICAKICAgIyAgICAKICAgICAgICAKICAgICAgICAK",
+    "j": "ICAgICAgICAKICAjIyMgICAKICAjIyMgICAKICAgICAgICAKICAgIyAgICAKICAgIyAgICAKICAgIyAgICAKIyAgIyAgICAKIyAgIyAgICAKICMjICAgICAK",
+    "k": "ICAgICAgICAKIyAgICAgICAKIyAgICAgICAKIyAgICMgICAKIyAgIyAgICAKIyMjICAgICAKIyAgIyAgICAKIyAgICMgICAKICAgICAgICAKICAgICAgICAK",
+    "l": "ICAgICAgICAKIyMgICAgICAKICAjICAgICAKICAjICAgICAKICAjICAgICAKICAjICAgICAKICAjICAgICAKICAgIyMjIyAKICAgICAgICAKICAgICAgICAK",
+    "m": "ICAgICAgICAKICAgICAgICAKICAgICAgICAKICMjICMjICAKIyAgIyAgIyAKIyAgIyAgIyAKIyAgICAgIyAKIyAgICAgIyAKICAgICAgICAKICAgICAgICAK",
+    "n": "ICAgICAgICAKICAgICAgICAKICAgICAgICAKICMjIyMjICAKIyAgICAgIyAKIyAgICAgIyAKIyAgICAgIyAKIyAgICAgIyAKICAgICAgICAKICAgICAgICAK",
+    "o": "ICAgICAgICAKICAgICAgICAKICAgICAgICAKICMjIyMjICAKIyAgICAgIyAKIyAgICAgIyAKIyAgICAgIyAKICMjIyMjICAKICAgICAgICAKICAgICAgICAK",
+    "p": "ICAgICAgICAKICAgICAgICAKICAgICAgICAKICMjIyMgICAKIyAgICAjICAKIyAgICAjICAKIyAgICAjICAKIyMjIyMgICAKIyAgICAgICAKIyAgICAgICAK",
+    "q": "ICAgICAgICAKICAgICAgICAKICAgICAgICAKICMjIyMgICAKIyAgICAjICAKIyAgICAjICAKIyAgICAjICAKICMjIyMjICAKICAgICAjICAKICAgICAjICAK",
+    "r": "ICAgICAgICAKICAgICAgICAKICAgICAgICAKIyMgICMjICAKICMgIyAgICAKICMjICAgICAKICMgICAgICAKICMgICAgICAKICAgICAgICAKICAgICAgICAK",
+    "s": "ICAgICAgICAKICAgICAgICAKICAgICAgICAKICMjIyMgICAKIyAgICAgICAKIyMjIyMgICAKICAgICMgICAKIyMjIyAgICAKICAgICAgICAKICAgICAgICAK",
+    "t": "ICAgICAgICAKICAjIyAgICAKICAgIyAgICAKICMjIyMjIyAKICAgIyAgICAKICAgIyAgICAKICAgIyAgICAKICAgIyMjIyAKICAgICAgICAKICAgICAgICAK",
+    "u": "ICAgICAgICAKICAgICAgICAKICAgICAgICAKIyAgICAgIyAKIyAgICAgIyAKIyAgICAgIyAKIyAgICAgIyAKICMjIyMjICAKICAgICAgICAKICAgICAgICAK",
+    "v": "ICAgICAgICAKICAgICAgICAKICAgICAgICAKIyAgICAgIyAKIyAgICAgIyAKICMgICAjICAKICAjICMgICAKICAgIyAgICAKICAgICAgICAKICAgICAgICAK",
+    "w": "ICAgICAgICAKICAgICAgICAKICAgICAgICAKIyAgICAgIyAKIyAgICAgIyAKIyAgIyAgIyAKIyAgIyAgIyAKICMjICMjICAKICAgICAgICAKICAgICAgICAK",
+    "x": "ICAgICAgICAKICAgICAgICAKICAgICAgICAKIyAgICAjICAKICMgICMgICAKICAjIyAgICAKICMgICMgICAKIyAgICAjICAKICAgICAgICAKICAgICAgICAK",
+    "y": "ICAgICAgICAKICAgICAgICAKICAgICAgICAKIyAgICAjICAKIyAgICAjICAKIyAgICAjICAKIyAgICAjICAKICMjIyMjICAKICAgICAjICAKIyMjIyMgICAK",
+    "z": "ICAgICAgICAKICAgICAgICAKICAgICAgICAKIyMjIyMjICAKICAgIyMgICAKICAgIyAgICAKICMjICAgICAKIyMjIyMjICAKICAgICAgICAKICAgICAgICAK",
+    ".": "ICAgICAgICAKICAgICAgICAKICAgICAgICAKICAgICAgICAKICAgICAgICAKICAgICAgICAKIyMjICAgICAKIyMjICAgICAKICAgICAgICAKICAgICAgICAK",
+    " ": "ICAgICAgICAKICAgICAgICAKICAgICAgICAKICAgICAgICAKICAgICAgICAKICAgICAgICAKICAgICAgICAKICAgICAgICAKICAgICAgICAKICAgICAgICAK"
+}
+
+const HEADING = "WELCOME MR.STARK"
+const CURRENT_DISPLAY_CHAR = '#';
+var USER_PREFERRED_CHAR = '*';
+
+function load() {
+    document.getElementById("heading").textContent = convertToAsciiArt(HEADING);
+    document.getElementById("user-preference-character").value = USER_PREFERRED_CHAR;
+}
+
+function decodeBase64Art(char) {
+    return atob(asciiArtBase64Encoding[char]).replaceAll(CURRENT_DISPLAY_CHAR, USER_PREFERRED_CHAR);
+}
+
+function convertToAsciiArt(input) {
+    let asciiArtLines = Array(10).join(". ").split(".");
+
+    for (let char of input) {
+        const asciiChar = decodeBase64Art(char);
+        const asciiCharLines = asciiChar.split("\n");
+
+        for (let i = 0; i < asciiArtLines.length; i++) {
+            asciiArtLines[i] += asciiCharLines[i];
+        }
+    }
+
+    return asciiArtLines.join("\n");
+}
+
+function handleInput() {
+    const inputText = document.getElementById("inputText").value.trim();
+
+    if (inputText === "") {
+        document.getElementById("output-container").style.visibility = "hidden";
+        document.getElementById("output").style.visibility = "hidden";
+        document.getElementById("copy-button").style.visibility = "hidden";
+        document.getElementById("output").textContent = "";
+        return;
+    }
+
+    const asciiArt = convertToAsciiArt(inputText);
+
+    document.getElementById("output-container").style.visibility = "visible";
+    document.getElementById("output").style.visibility = "visible";
+    document.getElementById("copy-button").style.visibility = "visible";
+    document.getElementById("output").textContent = asciiArt;
+}
+
+document.getElementById("convertButton").addEventListener("click", handleInput);
+document.getElementById("inputText").addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        document.getElementById("convertButton").click();
+    }
+});
+
+document.getElementById('toggleButton').addEventListener('click', function() {
+    const expandableDiv = document.getElementById('expandableDiv');
+    const toggleButton = document.getElementById('toggleButton');
+    if (expandableDiv.classList.contains('open')) {
+        expandableDiv.classList.remove('open');
+        toggleButton.classList.remove('open');
+    } else {
+        expandableDiv.classList.add('open');
+        toggleButton.classList.add('open');
+    }
+});
+
+document.getElementById('sampleForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const user_choice = document.getElementById('user-preference-character').value;
+    USER_PREFERRED_CHAR = user_choice;
+    document.getElementById('toggleButton').click();
+    document.getElementById('convertButton').click();
+    load();
+});
+
+document.getElementById('sampleForm').addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault();
+        document.getElementById('submit-button').click();
+    }
+});
+
+function processText(text) {
+    lines = text.split("\n");
+
+    for (let i = 0; i < lines.length; i++) {
+        lines[i] = lines[i].trimEnd();
+    }
+
+    return lines.join("\n");
+}
+
+function copyToClipboard() {
+    var copyText = document.getElementById("output");
+    navigator.clipboard.writeText(processText(copyText.innerText));
+    alert("Copied to Clipboard");
+}
+
+load();

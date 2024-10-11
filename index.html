@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Mr. Stark</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body id="body">
+    <div class="content">
+        <div class="heading-container">
+            <pre id="heading" class="heading-text"></pre>
+        </div>
+
+        <div style="display: flex; justify-content: center; margin-top: 20px;">
+            <div class="search-container">
+                <input type="text" id="inputText" class="search-input" placeholder="Enter your text here...">
+                <button id="convertButton" class="search-button">Generate</button>
+            </div>
+        </div>
+
+        <div class="expandable-container">
+            <button id="toggleButton" title="Toggle Settings" class="toggle-btn">
+                <?xml version="1.0" encoding="iso-8859-1"?>
+                <svg fill="#000000" height="24px" width="24px" version="1.1" id="Layer_1"
+                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                    viewBox="0 0 330.002 330.002" xml:space="preserve">
+                    <path id="XMLID_23_" d="M329.155,100.036c-2.108-6.011-7.784-10.035-14.154-10.035h-300c-6.371,0-12.046,4.024-14.154,10.035
+                        c-2.109,6.011-0.19,12.699,4.784,16.678l150.004,120c2.739,2.191,6.055,3.287,9.37,3.287c3.316,0,6.631-1.096,9.371-3.287
+                        l149.996-120C329.346,112.734,331.264,106.047,329.155,100.036z" />
+                </svg>
+            </button>
+
+            <div id="expandableDiv" class="expandable-div">
+                <form id="sampleForm">
+                    <label for="user-preference-character" class="label">Character:</label>
+                    <input class="formInput" type="text" id="user-preference-character" name="Character" maxlength=1
+                        required>
+                    <br>
+
+                    <button id="submit-button" type="submit" class="submit-btn">Submit</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="output-container" class="output-container">
+            <pre id="output" class="output-text"></pre>
+        </div>
+
+        <div style="text-align: center;">
+            <button id="copy-button" title="Copy to Clipboard" class="copy-button" onclick="copyToClipboard()">
+                <img src="assets/copy.png" alt="Copy" style="width: 20px; height: 20px;">
+            </button>
+        </div>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
